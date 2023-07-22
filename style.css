@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Tektur&display=swap');
+
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Tektur', cursive;
 }
 
 .navbar{
@@ -11,10 +13,15 @@
     align-items: center;
     padding: 10px;
     justify-content: space-between;
+    width: 100vw;
 }
 
 .navbar h3{
     font-size: 1.5rem;
+}
+
+.btns{
+    display: flex;
 }
 
 .btn{
@@ -48,24 +55,37 @@
     align-items: center;
     background-color: black;
     padding: 30px;
-    margin-top: 30px;
-    max-width: 50vw;
-    min-height: 70vh;
+    margin-top: 5rem;
 }
 
 #game-display{
     display: grid;
-    grid-template-columns: repeat(4, 100px);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
 }
 
 #hardmode-display{
     display: grid;
-    grid-template-columns: repeat(6, 100px);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(3, 1fr);
 }
 
 .imageSize{
     width: 100px;
     height: 100px;
+}
+
+@media screen and (max-width: 426px) {
+    .display{
+        max-width: 90vw;
+    }
+
+    .imageSize{
+        width: 60px;
+        height: 60px;
+    }
+
+    #hardmode-display{
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

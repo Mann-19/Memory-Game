@@ -108,10 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const gameDisplay = document.getElementById('game-display');
     const resultDisplay = document.querySelector('#resultDisplay');
+    const alertMessage = document.getElementById('alert');
     let cardsChosen = [];
     let cardsChosenId = [];
     let cardsWon = [];
 
+    // CLEAR ELEMENT FUNCTIONALITY(chatgpt)
     function clearElement(parentElement) {
         while (parentElement.firstChild) {
           parentElement.removeChild(parentElement.firstChild);
@@ -138,6 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     function flipCard() {
+        // prevent blank card from flipping (chatgpt)
+        if(this.getAttribute('src') === './pics/blank.png') {
+            return;
+        }
+        
         let cardID = this.getAttribute('data-id');
         cardsChosen.push(cards[cardID].name);
         cardsChosenId.push(cardID);
@@ -151,21 +158,23 @@ document.addEventListener('DOMContentLoaded', () => {
         let allCards = document.querySelectorAll('img');
         const firstPick = cardsChosenId[0];
         const secondPick = cardsChosenId[1];
-        if(cardsChosen[0] === cardsChosen[1]) {
-            alert("You found a match!");
+        if((cardsChosen[0] === cardsChosen[1]) && (cardsChosenId[0] !== cardsChosenId[1])) { 
+                                                //solved the same tile match bug(myself)
+            // alert("You found a match!");
             allCards[firstPick].setAttribute('src', './pics/blank.png');
             allCards[secondPick].setAttribute('src', './pics/blank.png');
             cardsWon.push(cardsChosen);
         } else {
             allCards[firstPick].setAttribute('src', './pics/cover.png');
             allCards[secondPick].setAttribute('src', './pics/cover.png');
-            alert("Sorry try again!");
+            // alert("Sorry try again!");
         }
         cardsChosen = [];
         cardsChosenId = [];
         resultDisplay.textContent = cardsWon.length;
         if(cardsWon.length === cards.length/2) {
             resultDisplay.textContent = 'You won the game';
+            setTimeout(createGameBoard, 250);
         }
     }
 
@@ -190,6 +199,11 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     function hardModeFlipCard() {
+        // prevent blank card from flipping (chatgpt)
+        if(this.getAttribute('src') === './pics/blank.png') {
+            return;
+        }
+
         let cardID = this.getAttribute('data-id');
         cardsChosen.push(hardModeCards[cardID].name);
         cardsChosenId.push(cardID);
@@ -203,21 +217,22 @@ document.addEventListener('DOMContentLoaded', () => {
         let allCards = document.querySelectorAll('img');
         const firstPick = cardsChosenId[0];
         const secondPick = cardsChosenId[1];
-        if(cardsChosen[0] === cardsChosen[1]) {
-            alert("You found a match!");
+        if((cardsChosen[0] === cardsChosen[1]) && (cardsChosenId[0] !== cardsChosenId[1])) {
+            // alert("You found a match!");
             allCards[firstPick].setAttribute('src', './pics/blank.png');
             allCards[secondPick].setAttribute('src', './pics/blank.png');
             cardsWon.push(cardsChosen);
         } else {
             allCards[firstPick].setAttribute('src', './pics/cover.png');
             allCards[secondPick].setAttribute('src', './pics/cover.png');
-            alert("Sorry try again!");
+            // alert("Sorry try again!");
         }
         cardsChosen = [];
         cardsChosenId = [];
         resultDisplay.textContent = cardsWon.length;
         if(cardsWon.length === hardModeCards.length/2) {
             resultDisplay.textContent = 'You won the game';
+            setTimeout(createGameBoard, 250);
         }
     }
 });

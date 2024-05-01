@@ -1,23 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Tektur&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Tektur', cursive;
+    font-family: 'Exo 2', cursive;
+}
+
+body{
+    background-color: aliceblue;
 }
 
 .navbar{
-    box-shadow: 0 0 4px 6px rgba(69, 68, 68, 0.404);
     display: flex;
-    align-items: center;
-    padding: 10px;
     justify-content: space-between;
-    width: 100vw;
-}
-
-.navbar h3{
-    font-size: 1.5rem;
+    align-items: center;
+    padding: 10px 30px;
 }
 
 .btns{
@@ -26,54 +24,59 @@
 
 .btn{
     cursor: pointer;
-    background-color: black;
+    background-color: transparent;
     border-radius: 5px;
     padding: 10px;
     margin: 5px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 #easy{
-    border: 2px solid blue;
-    color: lightblue;
+    border: 2px solid lightgreen;
+    font-weight: bold;
+    color: lightgreen;
 }
 
 #hard{
-    border: 2px solid red;
-    color: red;
-}
-
-.display{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid black;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    padding: 30px;
-    margin-top: 5rem;
+    border: 2px solid lightcoral;
+    color: lightcoral;
+    font-weight: bold;
 }
 
 #game-display{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: none;
+    grid-template-columns: repeat(4, 90px);
     grid-template-rows: repeat(3, 1fr);
-    gap: 5px;
+    gap: 8px;
+    width: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    border: 2px solid #333;
+    background-color: #333;
+    padding: 30px;
+    border-radius: 15px;
 }
 
 #hardmode-display{
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    display: none;
+    grid-template-columns: repeat(6, 90px);
     grid-template-rows: repeat(3, 1fr);
     gap: 5px;
+    width: fit-content;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    border: 2px solid #333;
+    background-color: #333;
+    padding: 30px;
+    border-radius: 15px;
 }
 
 .imageSize{
-    border: 2px solid darkblue;
+    border: 2px solid black;
     border-radius: 5px;
     width: 90px;
     height: 90px;
@@ -86,8 +89,15 @@
 }
 
 @media screen and (max-width: 426px) {
-    .display{
+    .navbar{
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    #game-display{
         max-width: 90vw;
+        grid-template-columns: repeat(4, 60px);
+        top: 40%;
     }
 
     .imageSize{
